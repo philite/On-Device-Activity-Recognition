@@ -1,6 +1,8 @@
 # Realtime On-Device Human Activity Recognition
 
+Current state: Usable for detecting running only and can send keyboard input 'W' according to sensor (not accurate for detect standing or walking)
 
+Dataset: Collected by wearing sensor on waist, no over-lapping window
 
 **NOTE: For some reason my MPU accelerometer's XYZ values driftted every time I record so I use gyroscope instead.
 
@@ -13,9 +15,9 @@ Python Libraries:
 * Sklearn for Machine Learning modeling
 * PySerial for serial monitoring
 
-Instruction:
+## Instruction:
 
-## Connecting
+### Connecting
 
 1. Connect ESP8266 to MPU6050 
 
@@ -31,7 +33,7 @@ Instruction:
 2. (Optional) If not sure of I2C address, use I2CScanner. 
 3. (Optional) [Calibrate MPU6050 offset using IMU_ZERO](https://github.com/jrowberg/i2cdevlib/blob/master/Arduino/MPU6050/examples/IMU_Zero/IMU_Zero.ino)
 
-## Arduino Code
+### Arduino Code
 
 [for more information about MPU6050](https://github.com/jrowberg/i2cdevlib/blob/master/Arduino/MPU6050)
 
@@ -51,7 +53,7 @@ Instruction:
 7. Read raw data
 * mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
-## Record Data in Time Window
+### Record Data in Time Window
 ESP8266 record in 100Mhz, 100 data points per second
 
 [Code adapted from "How to do gesture identification on arduino"](https://eloquentarduino.github.io/2019/12/how-to-do-gesture-identification-on-arduino/)
@@ -63,10 +65,13 @@ ESP8266 record in 100Mhz, 100 data points per second
 
 9. Function
 
-void getIMU_Window() // For recording
-void printFeatures_Window() // Print recorded values to serial monitor
+* void getIMU_Window() // For recording
+* void printFeatures_Window() // Print recorded values to serial monitor
 
 10. Save values from serial monitor and convert to csv and use sklearn to model the machine learning algorithm
 
+### Data Visualization and ML modeling
+
+TODO()
 
 
